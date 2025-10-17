@@ -1,0 +1,27 @@
+<ul class="users-list">
+  @for(user of userList(); track trackByKey() ? user[trackByKey()]: $index; let index = $index) {
+    <li class="user-item">
+      @if(customListItemTemplate(); as customListItemTemplate) {
+        <ng-container
+          [ngTemplateOutlet]="customListItemTemplate"
+          [ngTemplateOutletContext]="{ $implicit: user, index: index }">
+        </ng-container>
+      } @else {
+        <ng-container
+          [ngTemplateOutlet]="defaultCard"
+          [ngTemplateOutletContext]="{ $implicit: user, index: index }">
+        </ng-container>
+      }
+      <button class="edit-btn" (click)="onEditUser(user)">Edit</button>
+    </li>
+  }
+</ul>
+
+<ng-template #defaultCard let-user let-index="index">
+  <div class="default-user-card">
+    <h3>{{ user.name }}</h3>
+    <p>Email: {{ user.email }}</p>
+    <p>Age: {{ user.age }}</p>
+    <p>Role: {{ user.role }}</p>
+  </div>
+</ng-template>

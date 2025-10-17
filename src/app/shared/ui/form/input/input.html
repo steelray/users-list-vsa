@@ -1,0 +1,13 @@
+@if(label(); as label) {
+  <label class="label">{{ label }}</label>
+}
+<input
+  class="input"
+  [type]="type()"
+  [placeholder]="placeholder() || ''"
+  (keyup)="onKeyup($event)"
+  (blur)="onBlur()"
+  [autofocus]="autoFocus()"
+  [disabled]="disabled()"
+  [(ngModel)]="value"
+/>

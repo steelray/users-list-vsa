@@ -1,0 +1,8 @@
+@if(label(); as label) {
+  <label class="label">{{ label }}</label>
+}
+<select class="select" (change)="onChanged()" (blur)="onBlur()" [disabled]="disabled()" [(ngModel)]="value"> 
+  @for(item of options(); track $index) {
+    <option [value]="item.value">{{ item.label }}</option>
+  }
+</select>

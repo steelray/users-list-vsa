@@ -1,0 +1,10 @@
+<div class="users-filter">
+  <app-select 
+    label="Filter by role"
+    [options]="roleSelectItems"
+    [(value)]="roleFilter"
+  />
+</div>
+@if(users$ | async; as users) {
+  <app-users-list [userList]="users" (editUser)="onEditUser($event)"/>
+}

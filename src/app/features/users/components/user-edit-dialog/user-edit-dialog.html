@@ -1,0 +1,21 @@
+<h2 mat-dialog-title>Editing User: {{data.user.name}}</h2>
+<mat-dialog-content>
+  <form [formGroup]="editForm">
+    <div class="form-field">
+      <app-input label="Name" formControlName="name" />
+    </div>
+    <div class="form-field">
+      <app-input label="Email" formControlName="email" />
+    </div>
+    <div class="form-field">
+      <app-select [options]="roleSelectItems" formControlName="role"/>
+    </div>
+    <div class="form-field">
+      <app-input label="Age" formControlName="age" type="number" />
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button matButton (click)="onClose()">Cancel</button>
+  <button matButton (click)="onSave()" cdkFocusInitial>Save</button>
+</mat-dialog-actions>
